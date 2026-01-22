@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>BlendJet 2 Final</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Final Blendjet 2">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" href="./styles.css" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <!-- <model-viewer> HTML element -->
+    	<model-viewer
+	src="Blendjet_Final.glb"
+	ar ar-modes="scene-viewer webxr quick-look"
+	camera-controls
+	tone-mapping="neutral"
+	poster="poster.png"
+	shadow-intensity="0.3"
+	min-camera-orbit="auto 5deg 0.12m"
+	max-camera-orbit="auto 100deg auto"
+	min-field-of-view="15.4deg"
+	camera-orbit="21.56deg 88.8deg 0.5343m"
+	field-of-view="30deg"
+	id="gear">
+
+	<button class="Hotspot" slot="hotspot-1"
+		data-position="0.05m 0.24m 0.002m"
+		data-normal="0.995m -0.0940m -0.000m"
+		data-visibility-attribute="visible"
+		onClick="setTarget('0.05m 0.22m 0.002m'); setOrbit('120deg 50deg 0.2m')"
+		onMouseOver="addhotspot1()"  onMouseOut="removehotspot1()">
+          		<div class="HotspotAnnotation" id="hotspot1" style="visibility:hidden">lanyard</div>
+	</button>
+
+	<button class="Hotspot" slot="hotspot-2"
+		data-position="-0.037m 0.236m 0.0130m"
+		data-normal="-0.956m 0.002m 0.2926m"
+		data-visibility-attribute="visible"
+		onClick="setTarget('0.0m 0.236m 0.0130m'); setOrbit('-20deg 45deg 0.21m')"
+		onMouseOver="addhotspot2()"  onMouseOut="removehotspot2()">
+          		<div class="HotspotAnnotation" id="hotspot2" style="visibility:hidden">cover</div>
+	</button>
+
+	<button class="Hotspot" slot="hotspot-3"
+		data-position="-0.006m 0.021m 0.037m"
+		data-normal="0.000m 0.000m 1.000m"
+		data-visibility-attribute="visible"
+		onClick="setTarget('-0.006m 0.021m 0.037m'); setOrbit('2.446deg 90.64deg 0.16m')"
+		onMouseOver="addhotspot3()"  onMouseOut="removehotspot3()">
+          		<div class="HotspotAnnotation" id="hotspot3" style="visibility:hidden">usb</div>
+	</button>
+
+	<button class="Hotspot" slot="hotspot-4"
+		data-position="0.002m 0.040m 0.038m"
+		data-normal="0.0590964695506476m -0.00021474168397507995m 0.9982522532770255m"
+		data-visibility-attribute="visible"
+		onClick="setTarget('0.002m 0.055m 0.038m'); setOrbit('10deg 84deg 0.14m')"
+		onMouseOver="addhotspot4()"  onMouseOut="removehotspot4()">
+          		<div class="HotspotAnnotation" id="hotspot4" style="visibility:hidden">on/off</div>
+	</button>
+
+	<div style="position:absolute; bottom:50px; left:0px;">
+		<div>Camera:
+		<button onClick="setTarget('auto auto auto');setOrbit('-62.23deg 93.49deg 0.6942m')">View 1</button>
+		<button onClick="setTarget('auto auto auto');setOrbit('72.41deg 42.42deg 0.497m')">View 2</button>
+		<button onClick="setTarget('auto auto auto');setOrbit('2.446deg 90.64deg 0.6m')">View 3</button>
+		</div>
+	</div>
+
+	<div style="position:absolute; bottom:25px; left:0px">
+		<div>Animation: 
+		<button id="default1Btn" onClick="setTarget('0.0m 0.236m 0.0130m'); setOrbit('0deg 60deg 0.28m'); Btn01()">Cap</button>
+		<button id="default2Btn" onClick="setTarget('0.008m 0.1m 0.038m'); setOrbit('10deg 80deg 0.18m'); Btn02()">Blades</button>
+		<button id="pauseBtn" onClick="setTarget('auto auto auto');setOrbit('21.56deg 88.8deg 0.5343m'); pauseAnimation()">Pause</button>
+		</div>
+	</div>
+
+	<div style="position:absolute; bottom:0px; left:0px">
+		<div>Variants:
+		<button onClick="VBtn01()">01</button>
+		<button onClick="VBtn02()">02</button>
+		<button onClick="VBtn03()">03</button>
+		</div>
+	</div>
+
+
+      <div class="progress-bar show" slot="progress-bar">
+      	<div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">
+          View in your space
+      </button>
+      <div id="ar-prompt">
+          <img src="ar_hand_prompt.png">
+      </div>
+
+</model-viewer>  
+    
+
+	<script src="script.js">
+	</script>
+    <!-- Loads <model-viewer> for browsers: -->
+	<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js">
+	</script>
+
+	<script>
+		  function addhotspot1(){
+			document.getElementById("hotspot1").style.visibility="visible"
+		  }
+		  function removehotspot1(){
+			document.getElementById("hotspot1").style.visibility="hidden";
+		  }
+		  function addhotspot2(){
+			document.getElementById("hotspot2").style.visibility="visible"
+		  }
+		  function removehotspot2(){
+			document.getElementById("hotspot2").style.visibility="hidden";
+		  }
+		  function addhotspot3(){
+			document.getElementById("hotspot3").style.visibility="visible"
+		  }
+		  function removehotspot3(){
+			document.getElementById("hotspot3").style.visibility="hidden";
+		  }
+		   function addhotspot4(){
+			document.getElementById("hotspot4").style.visibility="visible"
+		  }
+		  function removehotspot4(){
+			document.getElementById("hotspot4").style.visibility="hidden";
+		  }
+	</script>
+
+	<script>
+		function setOrbit(orbit) {
+			document.getElementById('gear').cameraOrbit = orbit;
+		}
+		function setTarget(target) {
+			document.getElementById('gear').cameraTarget = target;
+		}
+	</script>
+
+	<script>
+		function Btn01()
+			{document.getElementById('gear').pause();
+			document.getElementById('gear').animationName = "capAction";
+			document.getElementById('gear').play();}
+		function Btn02()
+			{document.getElementById('gear').pause();
+			document.getElementById('gear').animationName = "blades2Action";
+			document.getElementById('gear').play();}
+		function pauseAnimation()
+			{document.getElementById('gear').pause();}
+	</script>
+
+	<script>
+		function VBtn01()
+			{document.getElementById('gear').variantName = "Var1";}
+		function VBtn02()
+			{document.getElementById('gear').variantName = "Var2";}
+		function VBtn03()
+			{document.getElementById('gear').variantName = "Var3";}
+	</script>
+
+  </body>
+</html>

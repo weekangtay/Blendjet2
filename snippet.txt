@@ -1,0 +1,20 @@
+<model-viewer src="Blendjet2-v10_retess.glb" ar ar-modes="scene-viewer webxr quick-look" camera-controls tone-mapping="neutral" poster="poster.png" shadow-intensity="0.3" min-camera-orbit="auto 5deg 0.3564m" max-camera-orbit="auto 100deg auto" min-field-of-view="15.4deg" camera-orbit="21.56deg 88.8deg 0.5343m" field-of-view="30deg">
+    <button class="Hotspot" slot="hotspot-1" data-position="0.05054418412996663m 0.24120478732232745m 0.002241497927198792m" data-normal="0.9955672079399209m -0.09405006164018606m -0.0007213738195629018m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">lanyard</div>
+    </button><button class="Hotspot" slot="hotspot-2" data-position="-0.037275444955447476m 0.23670794667789874m 0.013026852639498116m" data-normal="-0.9563376566140943m 0.002512466694210001m 0.2922532703888416m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">cover</div>
+    </button><button class="Hotspot" slot="hotspot-7" data-position="-0.0028370293997911186m 0.021423467975586634m 0.0372994003295899m" data-normal="0m 0m 1m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">usb</div>
+    </button><button class="Hotspot" slot="hotspot-8" data-position="0.0026226885691005754m 0.040169695428893676m 0.03862810436625313m" data-normal="0.0590964695506476m -0.00021474168397507995m 0.9982522532770255m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">on/off</div>
+    </button>
+    <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+    </div>
+    <button slot="ar-button" id="ar-button">
+        View in your space
+    </button>
+    <div id="ar-prompt">
+        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+    </div>
+</model-viewer>
